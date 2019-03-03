@@ -1,5 +1,5 @@
 /*
-© 2019 George Magdy -- Ahmed Shehab -- Rana Wael
+© 2019 -- George Magdy -- Ahmed Shehab -- Rana Wael
 All Rights Reserved
 */
 
