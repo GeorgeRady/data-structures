@@ -14,15 +14,16 @@ void Sort(void* values, int nValues, int type)
   //sort short-type arrays using bubble sort
   if (type == 1)
   {
+    short* shortarr = values;
     int i, j;
     for (i = 0; i < nValues-1; i++)
     {
       // Last i elements are already in place
       for (j = 0; j < nValues-i-1; j++)
       {
-        if (values[j] > values[j+1])
+        if (shortarr[j] > shortarr[j+1])
         {
-          swap(&values[j], &values[j+1]);
+          swap(&shortarr[j], &shortarr[j+1]);
         }
       }
     }
