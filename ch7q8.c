@@ -1,9 +1,16 @@
 #include "stdio.h"
 #include "string.h"
 
-void swap(short *xp, short *yp)
+void swap_short(short *xp, short *yp)
 {
     short temp = *xp;
+    *xp = *yp;
+    *yp = temp;
+}
+
+void swap_float(float *xp, float *yp)
+{
+    float temp = *xp;
     *xp = *yp;
     *yp = temp;
 }
@@ -23,7 +30,7 @@ void Sort(void* values, int nValues, int type)
       {
         if (shortarr[j] > shortarr[j+1])
         {
-          swap(&shortarr[j], &shortarr[j+1]);
+          swap_short(&shortarr[j], &shortarr[j+1]);
         }
       }
     }
@@ -32,7 +39,19 @@ void Sort(void* values, int nValues, int type)
   //sort float-type arrays using bubble sort
   if (type == 3)
   {
-
+    float* shortarr = values;
+    int i, j;
+    for (i = 0; i < nValues-1; i++)
+    {
+      // Last i elements are already in place
+      for (j = 0; j < nValues-i-1; j++)
+      {
+        if (shortarr[j] > shortarr[j+1])
+        {
+          swap_float(&shortarr[j], &shortarr[j+1]);
+        }
+      }
+    }
   }
 }
 
@@ -51,11 +70,10 @@ void main()
   }
 
   //sort the float-type array and print
-  // Sort(y, 5, 3);
-  // printf("\r\nsorted y:\r\n");
-  // for(int i=0;i<5;i++)
-  // {
-  //   printf("%d\r\n", y[i]);
-  // }
-
+  Sort(y, 5, 3);
+  printf("\r\nsorted y:\r\n");
+  for(int i=0;i<5;i++)
+  {
+    printf("%lf\r\n", y[i]);
+  }
 }
